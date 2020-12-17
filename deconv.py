@@ -11,8 +11,8 @@ import skimage as ski
 import skimage.restoration
 
 #from pymoresane.iuwt_convolution import fft_convolve
-from scipy.signal import fftconvolve
-from scipy.signal import convolve2d as conv2
+from scipy.signal import fftconvolve                    # convolution using the FFT algorithm
+from scipy.signal import convolve2d as conv2            # convolve2d - Uses the direct convolution or FFT convolution algorithm depending on which is faster
 
 from astropy.io.fits import getdata
 
@@ -102,7 +102,7 @@ def richardson_lucy_path(image, psf,imagetrue, itermax=50,cr=1):
 
 def total_variation(x):
 
-    uh = np.zeros_like(x)
+    uh = np.zeros_like(x)             #gives a zeroes array of the same shape
     uh[:,:-1] = x[:,1:] - x[:,:-1]
 
     uv = np.zeros_like(x)
